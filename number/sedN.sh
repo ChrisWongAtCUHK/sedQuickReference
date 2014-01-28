@@ -9,24 +9,25 @@ if [ $# != 1 ]; then
 	exit 1
 fi
 
+filename='lines.txt'
 case $1 in
 	"1")
 	    # Numbering lines (same as "cat -n file.txt").
-		sed = nu.txt 
+		sed = lines.txt 
 		;;
 
 	"2")
 		# The problem is that the display is effected on 2 lines. To set this as default:"
-		sed = nu.txt | sed 'N;s/\n/    /'
+		sed = lines.txt | sed 'N;s/\n/    /'
 		;;
 	"3")
 		# Number the lines but display only the numbers of non-blank lines.
-		sed '/./=' nu.txt | sed '/./N;s/\n/    /'
+		sed '/./=' lines.txt | sed '/./N;s/\n/    /'
 		;;
 	
 	"4")
 		# Counting the number of lines (same as "wc -l file.txt | awk '{ print $1 }'").
-		sed -n '$=' nu.txt
+		sed -n '$=' lines.txt
 		;;
 
 esac
