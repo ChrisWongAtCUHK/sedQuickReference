@@ -13,21 +13,21 @@ filename='lines.txt'
 case $1 in
 	"1")
 	    # Numbering lines (same as "cat -n file.txt").
-		sed = lines.txt 
+		sed = $filename 
 		;;
 
 	"2")
 		# The problem is that the display is effected on 2 lines. To set this as default:"
-		sed = lines.txt | sed 'N;s/\n/    /'
+		sed = $filename | sed 'N;s/\n/    /'
 		;;
 	"3")
 		# Number the lines but display only the numbers of non-blank lines.
-		sed '/./=' lines.txt | sed '/./N;s/\n/    /'
+		sed '/./=' $filename | sed '/./N;s/\n/    /'
 		;;
 	
 	"4")
 		# Counting the number of lines (same as "wc -l file.txt | awk '{ print $1 }'").
-		sed -n '$=' lines.txt
+		sed -n '$=' $filename
 		;;
 
 esac
